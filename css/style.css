@@ -3,18 +3,38 @@
 * {
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    background-color: antiquewhite;
 }
 
-h1,
-h2 {
+h1 {
     font-size: 70px;
     text-align: center;
     margin: 10px;
 }
 
+h2 {
+    text-align: center;
+    margin: 10px;
+}
+
 button {
+    border: none;
+    color: white;
+    text-decoration: none;
     display: block;
     margin: auto;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+}
+
+.button1:hover {
+    background-color: #e7e7e7;
 }
 
 .container {
