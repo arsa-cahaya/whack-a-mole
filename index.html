@@ -11,9 +11,13 @@
 <body>
     <h1>Whack a Mole!</h1>
 
-    <h2 class="papan-skor">Score: 0</h2>
+    <div class="score-container">
+        <h2 class="papan-score">Score: <span id="score">0</span></h2>
+        <h2 class="best-score">Best Score: <span id="best-score">0</span></h2>
+    </div>
 
     <button type="button" class="play button1" onclick="mulai()">Play!</button>
+    <h2 class="selesai hidden">Waktu Telah Habis!!!</h2>
 
     <div class="container">
         <div class="tanah">
@@ -37,6 +41,7 @@
     </div>
 
     <audio src="audio/aww.MP3" id="pop"></audio>
+    <audio src="audio/theme.mp3" id="tema"></audio>
     <script src="js/script.js"></script>
 </body>
 

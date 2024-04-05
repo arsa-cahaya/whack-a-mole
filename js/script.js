@@ -1,11 +1,16 @@
 const tanah = document.querySelectorAll('.tanah');
 const tikus = document.querySelectorAll('.tikus');
-const papanSkor = document.querySelector('.papan-skor');
+const papanSkor = document.getElementById('score');
+const bestSkor = document.getElementById('best-score');
 const pop = document.querySelector('#pop');
+const tombolPlay = document.querySelector('.play');
+const selesaiText = document.querySelector('.selesai');
+const tema = document.querySelector('#tema');
 
 let tanahSebelumnya;
 let selesai;
 let skor;
+let bestScore = localStorage.getItem('bestScore') || 0;
 
 function randomTanah(tanah) {
     const t = Math.floor(Math.random() * tanah.length);
@@ -34,13 +39,33 @@ function munculTikus() {
     }, waktuRandom);
 }
 
+function updateBestScore() {
+    if (skor > bestScore) {
+        bestScore = skor;
+        localStorage.setItem('bestScore', bestScore);
+        bestSkor.textContent = bestScore;
+    }
+}
+
 function mulai() {
     selesai = false;
     skor = 0;
     papanSkor.textContent = 0;
+    papanSkor.textContent = 0;
+    bestSkor.textContent = bestScore;
     munculTikus();
+    tombolPlay.style.display = 'none';
+    selesaiText.classList.add('hidden');
+
+    tema.play();
+
     setTimeout(() => {
         selesai = true;
+        selesaiText.classList.remove('hidden');
+        tombolPlay.textContent = 'Play Again?';
+        tombolPlay.style.display = 'block';
+        tema.pause();
+        updateBestScore();
     }, 20000);
 }
 
@@ -55,3 +80,7 @@ function pukulTikus() {
 tikus.forEach(t => {
     t.addEventListener('click', pukulTikus);
 });
+
+window.onload = function () {
+    bestSkor.textContent = bestScore;
+}
